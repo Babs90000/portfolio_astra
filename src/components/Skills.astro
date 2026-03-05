@@ -1,0 +1,72 @@
+---
+import '../styles/skills.css';
+---
+
+<section class="skills-section" id="skills">
+    <div class="skills-container">
+        <h2 class="section-title animate-on-scroll" data-i18n="skills.title">Habilidades Técnicas</h2>
+        <div class="skills-grid" id="skills-grid">
+            <div class="skill-category animate-on-scroll">
+                <h3>Frontend</h3>
+                <ul class="skill-list">
+                    <li>HTML5 / CSS3</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>React (en aprendizaje)</li>
+                    <li>Diseño Responsivo</li>
+                </ul>
+            </div>
+            <div class="skill-category animate-on-scroll">
+                <h3>Backend</h3>
+                <ul class="skill-list">
+                    <li>PHP</li>
+                    <li>MySQL</li>
+                    <li>API REST</li>
+                    <li>Node.js</li>
+                </ul>
+            </div>
+            <div class="skill-category animate-on-scroll">
+                <h3>Herramientas</h3>
+                <ul class="skill-list">
+                    <li>Git / GitHub</li>
+                    <li>Docker</li>
+                    <li>VSCode</li>
+                    <li>Vite</li>
+                </ul>
+            </div>
+            <div class="skill-category animate-on-scroll">
+                <h3>Soft Skills</h3>
+                <ul class="skill-list">
+                    <li>Autonomía</li>
+                    <li>Aprendizaje continuo</li>
+                    <li>Espíritu de equipo</li>
+                    <li>Curiosidad por la IA</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { translations, getDefaultLang } from '../i18n/translations.js';
+
+    function renderSkills(lang) {
+        const grid = document.getElementById('skills-grid');
+        if (!grid) return;
+        const categories = translations[lang]?.skills?.categories || [];
+
+        grid.innerHTML = categories.map(cat => `
+            <div class="skill-category animate-on-scroll visible">
+                <h3>${cat.title}</h3>
+                <ul class="skill-list">
+                    ${cat.items.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+            </div>
+        `).join('');
+    }
+
+    renderSkills(getDefaultLang());
+
+    document.addEventListener('langChange', (e) => {
+        renderSkills(e.detail.lang);
+    });
+</script>
