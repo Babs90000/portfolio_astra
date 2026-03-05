@@ -123,7 +123,6 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 </style>
 
 <header>
-    <!-- overlay DANS le header = même stacking context -->
     <div class="overlay" id="overlay"></div>
     <nav>
         <a href="#" class="logo">Babou Dev</a>
@@ -153,12 +152,14 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
         burger?.classList.remove('open');
         navRight?.classList.remove('open');
         overlay?.classList.remove('open');
+        document.body.classList.remove('menu-open');
     }
 
     burger?.addEventListener('click', () => {
         burger.classList.toggle('open');
         navRight?.classList.toggle('open');
         overlay?.classList.toggle('open');
+        document.body.classList.toggle('menu-open');
     });
 
     overlay?.addEventListener('click', closeMenu);

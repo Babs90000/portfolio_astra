@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 :root {
   --primary: #0ea5e9;
   --primary-dark: #0284c7;
@@ -26,6 +30,10 @@ body {
   color: var(--text-light);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+body.menu-open {
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
