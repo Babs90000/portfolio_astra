@@ -19,6 +19,8 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
+        position: relative;
+        z-index: 2;
     }
     .logo {
         font-size: 1.75rem;
@@ -68,7 +70,7 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
         background: none;
         border: none;
         padding: 0.25rem;
-        z-index: 200;
+        z-index: 3;
     }
     .burger span {
         display: block;
@@ -87,7 +89,7 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0.5);
-        z-index: 150;
+        z-index: 1;
     }
     .overlay.open { display: block; }
 
@@ -107,7 +109,7 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
             gap: 2.5rem;
             transition: right 0.3s ease;
             border-left: 1px solid var(--border);
-            z-index: 200;
+            z-index: 2;
         }
         .nav-right.open { right: 0; }
 
@@ -120,9 +122,9 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
     }
 </style>
 
-<div class="overlay" id="overlay"></div>
-
 <header>
+    <!-- overlay DANS le header = même stacking context -->
+    <div class="overlay" id="overlay"></div>
     <nav>
         <a href="#" class="logo">Babou Dev</a>
         <button class="burger" id="burger" aria-label="Menu">
