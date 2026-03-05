@@ -1,0 +1,44 @@
+---
+---
+<style>
+    .hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+    .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .hero-subtitle {
+        font-size: 1.5rem;
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    @media (max-width: 768px) {
+        .hero h1 { font-size: 2.5rem; }
+        .hero-subtitle { font-size: 1.125rem; }
+        .hero-buttons { flex-direction: column; }
+        .btn { width: 100%; text-align: center; }
+    }
+</style>
+
+<section class="hero">
+    <h1 class="animate-on-scroll" data-i18n="hero.title">Desarrollador Web Full-Stack</h1>
+    <p class="hero-subtitle animate-on-scroll" data-i18n="hero.subtitle">Diplomado en desarrollo web full-stack. Creo sitios modernos con PHP, JavaScript y React.</p>
+    <div class="hero-buttons animate-on-scroll">
+        <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_projects">Ver mis proyectos</a>
+        <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta_contact">Contactarme</a>
+    </div>
+</section>
