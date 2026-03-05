@@ -1,6 +1,7 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
 ---
+
 <style>
     header {
         background: rgba(15, 23, 42, 0.8);
@@ -28,8 +29,18 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
         background-clip: text;
         text-decoration: none;
     }
-    .nav-right { display: flex; align-items: center; gap: 2rem; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
     .nav-links a {
         text-decoration: none;
         color: var(--text-muted);
@@ -47,15 +58,79 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
         transition: width 0.3s;
     }
     .nav-links a:hover::after { width: 100%; }
+
+    .burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0.25rem;
+        z-index: 200;
+    }
+    .burger span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background: var(--text-muted);
+        transition: all 0.3s;
+        transform-origin: center;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 150;
+    }
+    .overlay.open { display: block; }
+
     @media (max-width: 768px) {
-        .nav-links { gap: 1rem; font-size: 0.85rem; }
+        .burger { display: flex; }
+
+        .nav-right {
+            position: fixed;
+            top: 0; right: -100%;
+            width: 70%;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.97);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            transition: right 0.3s ease;
+            border-left: 1px solid var(--border);
+            z-index: 200;
+        }
+        .nav-right.open { right: 0; }
+
+        .nav-links {
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        .nav-links a { font-size: 1.2rem; }
     }
 </style>
+
+<div class="overlay" id="overlay"></div>
 
 <header>
     <nav>
         <a href="#" class="logo">Babou Dev</a>
-        <div class="nav-right">
+        <button class="burger" id="burger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-right" id="nav-right">
             <ul class="nav-links">
                 <li><a href="#projects" data-i18n="nav.projects">Proyectos</a></li>
                 <li><a href="#skills" data-i18n="nav.skills">Habilidades</a></li>
@@ -66,3 +141,27 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
         </div>
     </nav>
 </header>
+
+<script>
+    const burger = document.getElementById('burger');
+    const navRight = document.getElementById('nav-right');
+    const overlay = document.getElementById('overlay');
+
+    function closeMenu() {
+        burger?.classList.remove('open');
+        navRight?.classList.remove('open');
+        overlay?.classList.remove('open');
+    }
+
+    burger?.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        navRight?.classList.toggle('open');
+        overlay?.classList.toggle('open');
+    });
+
+    overlay?.addEventListener('click', closeMenu);
+
+    navRight?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+</script>
