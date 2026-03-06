@@ -69,8 +69,6 @@ export const translations = {
           ],
         },
         { title: "Backend", items: ["PHP", "MySQL", "API REST", "Node.js"] },
-        tags: {
-    state: "Estado"},
         {
           title: "Herramientas",
           items: ["Git / GitHub", "Docker", "VSCode", "Vite"],
@@ -85,6 +83,9 @@ export const translations = {
           ],
         },
       ],
+    },
+    tags: {
+      state: "Estado",
     },
     about: {
       title: "Sobre mí",
@@ -185,9 +186,6 @@ export const translations = {
           title: "Outils",
           items: ["Git / GitHub", "Docker", "VSCode", "Vite"],
         },
-        tags: {
-    state: "État",
-},
         {
           title: "Soft Skills",
           items: [
@@ -198,6 +196,9 @@ export const translations = {
           ],
         },
       ],
+    },
+    tags: {
+      state: "État",
     },
     about: {
       title: "À propos",
@@ -295,9 +296,6 @@ export const translations = {
         },
         { title: "Backend", items: ["PHP", "MySQL", "REST API", "Node.js"] },
         { title: "Tools", items: ["Git / GitHub", "Docker", "VSCode", "Vite"] },
-        tags: {
-    state: "State",
-},
         {
           title: "Soft Skills",
           items: [
@@ -308,6 +306,9 @@ export const translations = {
           ],
         },
       ],
+    },
+    tags: {
+      state: "State",
     },
     about: {
       title: "About me",
