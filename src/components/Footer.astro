@@ -7,6 +7,7 @@
     .footer-links a:hover { color: var(--secondary); }
     .footer-copy { color: var(--text-muted); font-size: 0.9rem; }
 </style>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
 <footer>
     <div class="footer-links">
@@ -15,5 +16,5 @@
         <a href="https://www.linkedin.com/in/babou-camara-diaby" target="_blank">LinkedIn</a>
         <a href="https://kdevs.io" target="_blank">KDevs</a>
     </div>
-    <p class="footer-copy">&copy; 2026 Babou Dev. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+    <p class="footer-copy">&copy; <span id="year"></span> Babou . <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
 </footer>
